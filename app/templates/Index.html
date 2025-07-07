@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Airline Booking Demand</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <head>
+  <meta charset="UTF-8" />
+  <title>Airline Booking Demand</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      background-image: url('https://images.unsplash.com/photo-1526382925646-4aa1d7e43b38?auto=format&fit=crop&w=1500&q=80');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      font-family: Arial, sans-serif;
+      color: #fff;
+    }
+
+    h1, h2, label, table {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 0.5em;
+      border-radius: 8px;
+    }
+
+    form {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 1em;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      margin-top: 1em;
+    }
+
+    th, td {
+      background-color: rgba(255, 255, 255, 0.8);
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+</head>
+<body>
+  <h1>Airline Booking Demand</h1>
+
+  <!-- ✅ Dynamic Filter Form -->
+  <form method="post" action="/filter" style="margin-bottom: 20px;">
+    <label for="source">Source:</label>
+    <select name="source" id="source">
+      <option value="">All</option>
+      {% for city in data | map(attribute='origin') | unique | list %}
+        <option value="{{ city }}">{{ city }}</option>
+      {% endfor %}
+    </select>
+
+    <label for="destination">Destination:</label>
+    <select name="destination" id="destination">
+      <option value="">All</option>
+      {% for city in data | map(attribute='destination') | unique | list %}
+        <option value="{{ city }}">{{ city }}</option>
+      {% endfor %}
+    </select>
+
+    <label for="class">Class:</label>
+    <select name="class_" id="class_">
+      <option value="">All</option>
+      <option value="Economy">Economy</option>
+      <option value="Business">Business</option>
+    </select>
+
+    <button type="submit">Apply Filters</button>
+  </form>
+
+  <!-- ✅ GPT-Generated Insights -->
+  <h2>Insights from ChatGPT</h2>
+  <div style="border: 1px solid #ccc; padding: 1em; margin-bottom: 2em;">
+    <p>{{ insights | safe }}</p>
+  </div>
+
+  <!-- ✅ Price Trend Chart -->
+  <canvas id="priceChart" width="400" height="200"></canvas>
+
+  <!-- ✅ Data Table -->
+  <table border="1" cellpadding="10" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Origin</th>
+        <th>Destination</th>
+        <th>Date</th>
+        <th>Price (AUD)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for route in data %}
+      <tr>
+        <td>{{ route.origin }}</td>
+        <td>{{ route.destination }}</td>
+        <td>{{ route.date }}</td>
+        <td>{{ route.price }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <!-- ✅ Chart.js Script -->
+  <script>
+    const labels = {{ data | map(attribute='date') | list | tojson }};
+    const prices = {{ data | map(attribute='price') | list | tojson }};
+
+    const ctx = document.getElementById('priceChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Price Trend (AUD)',
+          data: prices,
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 2,
+          fill: false,
+          tension: 0.3
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: false
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
