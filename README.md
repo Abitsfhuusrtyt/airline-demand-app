@@ -42,8 +42,7 @@ python -m uvicorn app.main:app --reload
 
 
 ### 5. Demo screenshots.
-![Alt text]("C:\Users\prasanth-23177\.vscode\airline-demand-app\images\Screenshot 2025-07-07 231525.png")
-![Alt text]("C:\Users\prasanth-23177\.vscode\airline-demand-app\images\Screenshot 2025-07-07 231541.png")
+
 
 
 ### 6.Example API Sources
