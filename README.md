@@ -42,11 +42,8 @@ python -m uvicorn app.main:app --reload
 
 
 ### 5. Demo screenshots.
-[![Dashboard Screenshot](https://github.com/Abitsfhuusrtyt/airline-demand-app/blob/master/Screenshot%202025-07-07%20231525.png?raw=true)](https://github.com/Abitsfhuusrtyt/airline-demand-app)
 
-
-[![Dashboard Screenshot](https://github.com/Abitsfhuusrtyt/airline-demand-app/blob/master/Screenshot%202025-07-07%20231541.png?raw=true)](https://github.com/Abitsfhuusrtyt/airline-demand-app)
-
+![image alt](https://github.com/Abitsfhuusrtyt/airline-demand-app/blob/0732b0d08867b5e9b8c419614ab996feebf38d80/Screenshot%202025-07-07%20231525.png)
 
 
 ### 6.Example API Sources
