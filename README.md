@@ -42,8 +42,9 @@ python -m uvicorn app.main:app --reload
 
 
 ### 5. Demo screenshots.
-Screenshot 2025-07-07 231525.png
+![demo screenshot] [https://github.com/Abitsfhuusrtyt/airline-demand-app/blob/master/Screenshot%202025-07-07%20231525.png?raw=true]
 
+![demo screenshot] [https://github.com/Abitsfhuusrtyt/airline-demand-app/blob/master/Screenshot%202025-07-07%20231541.png?raw=true]
 
 
 
