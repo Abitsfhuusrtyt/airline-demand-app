@@ -42,6 +42,8 @@ python -m uvicorn app.main:app --reload
 
 
 ### 5. Demo screenshots.
+Screenshot 2025-07-07 231525.png
+
 
 
 
